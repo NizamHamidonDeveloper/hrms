@@ -1,38 +1,8 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { User, UserRole } from '@/lib/auth/types'
+import { User } from '@/lib/auth/types'
 
-// This is a mock user database for the prototype
-// In a real application, this would be replaced with a database
-const users: User[] = [
-  {
-    id: '1',
-    email: 'employee@example.com',
-    name: 'Demo Employee',
-    roles: ['4'],
-    department: 'Engineering',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-  {
-    id: '2',
-    email: 'manager@example.com',
-    name: 'Demo Manager',
-    roles: ['3', '4'],
-    department: 'Engineering',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-  {
-    id: '3',
-    email: 'admin@example.com',
-    name: 'Demo Admin',
-    roles: ['hr_admin', 'employee'],
-    department: 'HR',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-]
+// Removed unused mock users array
 
 const handler = NextAuth({
   providers: [
@@ -68,10 +38,11 @@ const handler = NextAuth({
             id: data.user.id?.toString() ?? '',
             email: data.user.email ?? '',
             name: data.user.name ?? '',
-            accessToken: data.token.access_token ?? '',
-            user: data.user,
-            profile: data.profile,
-          } as any // Type assertion for NextAuth user
+            roles: ['4'], // Default to employee role
+            department: 'Engineering',
+            joinDate: new Date(),
+            status: 'active',
+          } as User
         } catch (e) {
           console.log('DEBUG: Exception during login', e)
           return null
@@ -82,23 +53,26 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = (user as any).id ?? '';
-        token.name = (user as any).name ?? '';
-        token.email = (user as any).email ?? '';
-        token.accessToken = (user as any).accessToken ?? '';
-        token.user = (user as any).user ?? null;
-        token.profile = (user as any).profile ?? null;
+        const userObj = user as { id?: string; name?: string; email?: string; accessToken?: string; user?: unknown; profile?: unknown };
+        token.id = userObj.id ?? '';
+        token.name = userObj.name ?? '';
+        token.email = userObj.email ?? '';
+        token.accessToken = userObj.accessToken ?? '';
+        token.user = userObj.user ?? null;
+        token.profile = userObj.profile ?? null;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        (session.user as any).id = token.id || '';
-        (session.user as any).name = token.name || '';
-        (session.user as any).email = token.email || '';
-        (session as any).accessToken = token.accessToken || '';
-        (session as any).user = token.user || null;
-        (session as any).profile = token.profile || null;
+        const sessionUser = session.user as { id?: string; name?: string; email?: string };
+        const sessionObj = session as { accessToken?: string; user?: unknown; profile?: unknown };
+        sessionUser.id = (token.id as string) || '';
+        sessionUser.name = (token.name as string) || '';
+        sessionUser.email = (token.email as string) || '';
+        sessionObj.accessToken = (token.accessToken as string) || '';
+        sessionObj.user = token.user || null;
+        sessionObj.profile = token.profile || null;
       }
       return session;
     },

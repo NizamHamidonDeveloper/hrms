@@ -26,7 +26,7 @@ export default function TeamLeaveApprovalsPage() {
   const [statusFilter, setStatusFilter] = useState('All');
   const [selectedRequest, setSelectedRequest] = useState<ApprovalRequest | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [actionMessage, setActionMessage] = useState<string | null>(null);
+  // Removed unused actionMessage state
   const [approvals, setApprovals] = useState<ApprovalRequest[]>([]);
 
   // Dynamically generate filter options from data
@@ -53,7 +53,6 @@ export default function TeamLeaveApprovalsPage() {
       })
       .catch((err) => {
         console.error('[TeamLeaveApprovals] Fetch error:', err);
-        setActionMessage(err.message);
       });
   }, []);
 
@@ -64,10 +63,7 @@ export default function TeamLeaveApprovalsPage() {
     return matchEmployee && matchType && matchStatus;
   });
 
-  const openModal = (req: ApprovalRequest) => {
-    setSelectedRequest(req);
-    setIsModalOpen(true);
-  };
+  // Removed unused openModal function
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedRequest(null);
@@ -82,12 +78,11 @@ export default function TeamLeaveApprovalsPage() {
       });
       if (!res.ok) throw new Error('Failed to approve request');
       setApprovals((prev) => prev.map((r) => r.id === req.id ? { ...r, status: 'Approved' } : r));
-      setActionMessage(`Request for ${req.employee.name} approved!`);
+      // Request approved
     } catch {
-      setActionMessage('Error: Could not approve request.');
+      // Error handling
     }
     setIsModalOpen(false);
-    setTimeout(() => setActionMessage(null), 2000);
   };
   const handleReject = async (req: ApprovalRequest) => {
     try {
@@ -98,12 +93,11 @@ export default function TeamLeaveApprovalsPage() {
       });
       if (!res.ok) throw new Error('Failed to reject request');
       setApprovals((prev) => prev.map((r) => r.id === req.id ? { ...r, status: 'Rejected' } : r));
-      setActionMessage(`Request for ${req.employee.name} rejected!`);
+      // Request rejected
     } catch {
-      setActionMessage('Error: Could not approve request.');
+      // Error handling
     }
     setIsModalOpen(false);
-    setTimeout(() => setActionMessage(null), 2000);
   };
 
   return (

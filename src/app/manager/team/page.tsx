@@ -57,14 +57,11 @@ type TeamMember = {
 
 export default function ManagerTeamPage() {
   const [team, setTeam] = useState<TeamMember[]>(mockTeam);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Removed unused loading and error state
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
     fetch('/api/manager/team')
       .then(res => {
         if (!res.ok) throw new Error('API error');
@@ -72,12 +69,9 @@ export default function ManagerTeamPage() {
       })
       .then(data => {
         setTeam(data);
-        setLoading(false);
       })
       .catch(() => {
         setTeam(mockTeam);
-        setError('Failed to fetch from API, using mock data.');
-        setLoading(false);
       });
   }, []);
 
@@ -89,7 +83,7 @@ export default function ManagerTeamPage() {
     setIsModalOpen(false);
     setSelectedMember(null);
   };
-  const handleMessage = (member: TeamMember) => {};
+  // Removed unused handleMessage function
 
   return (
     <main className="p-8 max-w-7xl mx-auto min-h-screen bg-white dark:bg-gray-900" role="main" aria-labelledby="page-title">

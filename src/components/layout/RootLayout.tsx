@@ -25,11 +25,11 @@ export default function RootLayout({ children, user }: RootLayoutProps) {
     <html lang="en" className={`${inter.variable}`}>
       <body className="min-h-screen bg-gray-50">
         <div className="flex min-h-screen">
-          <Sidebar activeRole={currentUser.role} />
+          <Sidebar activeRoleId={4} />
           <div className="flex-1 flex flex-col">
             <Header
               userName={currentUser.name}
-              userRole={currentUser.role}
+              userRoleId={4}
               userAvatar={currentUser.avatar}
             />
             <main className="flex-1">

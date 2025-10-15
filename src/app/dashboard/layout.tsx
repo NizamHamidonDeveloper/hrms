@@ -6,7 +6,7 @@ import { useEffect, useState, useContext, useMemo } from 'react'
 import Header from '@/components/layout/Header'
 import Sidebar from '@/components/layout/Sidebar'
 import { RoleContext } from '@/components/common/RoleProvider'
-import { ROLE_ID, ROLE_LABELS } from '@/lib/roles'
+import { ROLE_ID } from '@/lib/roles'
 
 export default function DashboardLayout({
   children,
@@ -17,7 +17,7 @@ export default function DashboardLayout({
   const router = useRouter()
   // Determine available roles based on backend role_id
   const availableRoleIds = useMemo(() => {
-    const profile = (session as any)?.profile || (session as any)?.user?.profile
+    const profile = (session as { profile?: { role_id?: number } })?.profile || (session as { user?: { profile?: { role_id?: number } } })?.user?.profile
     const roleId = profile && profile.role_id ? Number(profile.role_id) : undefined
     if (roleId === ROLE_ID.HR_ADMIN) {
       return [ROLE_ID.HR_ADMIN, ROLE_ID.EMPLOYEE]

@@ -29,7 +29,7 @@ export default function LoginPage() {
     })
     if (!result?.error) {
       const session = await getSession()
-      const roleId = (session as any)?.profile?.role_id
+      const roleId = (session as { profile?: { role_id?: number } })?.profile?.role_id
       const roleIdNum = Number(roleId)
       if (roleIdNum === ROLE_ID.HR_ADMIN) {
         router.push('/admin/dashboard');
@@ -136,7 +136,7 @@ export default function LoginPage() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerSession(context.req, context.res, authOptions)
   // Use profile.role_id for role-based redirect
-  const profile = (session as any)?.profile;
+  const profile = (session as { profile?: { role_id?: number } })?.profile;
   const roleId = profile?.role_id;
   console.log('LOGIN PAGE DEBUG: session:', session, 'roleId:', roleId);
   if (roleId === ROLE_ID.HR_ADMIN) {

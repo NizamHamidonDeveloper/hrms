@@ -3,7 +3,7 @@ import { Menu, Transition, Listbox } from '@headlessui/react'
 import { BellIcon, UserCircleIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import { signOut } from 'next-auth/react'
-import { ROLE_LABELS, ROLE_ID, RoleKey } from '@/lib/roles'
+import { ROLE_LABELS, ROLE_ID } from '@/lib/roles'
 import { getRoleNameById } from '@/lib/roles'
 import { useRouter } from 'next/navigation'
 

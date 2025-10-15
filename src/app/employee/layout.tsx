@@ -3,18 +3,15 @@
 import Sidebar from '@/components/layout/Sidebar'
 import { useSession } from 'next-auth/react'
 import Header from '@/components/layout/Header'
-import { useState, useEffect, useContext, useMemo } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { useContext, useMemo } from 'react'
 import { RoleProvider, RoleContext } from '@/components/common/RoleProvider'
-import { ROLE_ID, ROLE_LABELS } from '@/lib/roles'
+import { ROLE_ID } from '@/lib/roles'
 
 export default function EmployeeLayout({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession()
-  const router = useRouter()
-  const pathname = usePathname()
   // Determine available roles based on backend role_id
   const availableRoleIds = useMemo(() => {
-    const profile = (session as any)?.profile || (session as any)?.user?.profile
+    const profile = (session as { profile?: { role_id?: number } })?.profile || (session as { user?: { profile?: { role_id?: number } } })?.user?.profile
     const roleId = profile && profile.role_id ? Number(profile.role_id) : undefined
     if (roleId === ROLE_ID.HR_ADMIN) {
       return [ROLE_ID.HR_ADMIN, ROLE_ID.EMPLOYEE]
@@ -49,12 +46,12 @@ export default function EmployeeLayout({ children }: { children: React.ReactNode
 
   return (
     <RoleProvider initialRole={initialRole}>
-      <EmployeeLayoutContent availableRoleIds={availableRoleIds} session={session}>{children}</EmployeeLayoutContent>
+      <EmployeeLayoutContent availableRoleIds={availableRoleIds} session={session || {}}>{children}</EmployeeLayoutContent>
     </RoleProvider>
   )
 }
 
-function EmployeeLayoutContent({ children, availableRoleIds, session }: { children: React.ReactNode, availableRoleIds: number[], session: any }) {
+function EmployeeLayoutContent({ children, availableRoleIds, session }: { children: React.ReactNode, availableRoleIds: number[], session: { user?: { name?: string; image?: string } } }) {
   const { activeRole, setActiveRole } = useContext(RoleContext)
   const effectiveRoleId = typeof activeRole === 'number' ? activeRole : availableRoleIds[0];
   const handleRoleChange = (roleId: number) => {

@@ -156,14 +156,10 @@ export default function AdminSettingsPage() {
   const [settingsBlackoutDates, setSettingsBlackoutDates] = useState<string[]>([]);
   const [leaveSettings, setLeaveSettings] = useState(MOCK_SETTINGS.leaveSettings);
   const [notificationSettings, setNotificationSettings] = useState(MOCK_SETTINGS.notificationSettings);
-  const [settingsFallback, setSettingsFallback] = useState(false);
-  const [settingsLoading, setSettingsLoading] = useState(true);
-  const [settingsError, setSettingsError] = useState<string | null>(null);
+  // Removed unused state variables
 
   useEffect(() => {
     async function fetchSettings() {
-      setSettingsLoading(true);
-      setSettingsError(null);
       try {
         const res = await fetch("/api/admin/settings");
         if (!res.ok) throw new Error("API error");
@@ -174,7 +170,6 @@ export default function AdminSettingsPage() {
         setSettingsBlackoutDates(data.blackoutDates);
         setLeaveSettings(data.leaveSettings);
         setNotificationSettings(data.notificationSettings);
-        setSettingsFallback(false);
       } catch {
         setCompanyName(MOCK_SETTINGS.companyName);
         setLeaveYearStart(MOCK_SETTINGS.leaveYearStart);
@@ -182,10 +177,6 @@ export default function AdminSettingsPage() {
         setSettingsBlackoutDates(MOCK_SETTINGS.blackoutDates);
         setLeaveSettings(MOCK_SETTINGS.leaveSettings);
         setNotificationSettings(MOCK_SETTINGS.notificationSettings);
-        setSettingsFallback(true);
-        setSettingsError("Could not load settings from API. Using mock data.");
-      } finally {
-        setSettingsLoading(false);
       }
     }
     fetchSettings();
@@ -193,7 +184,6 @@ export default function AdminSettingsPage() {
 
   async function handleSaveSettings(e: React.FormEvent) {
     e.preventDefault();
-    setSettingsError(null);
     try {
       const res = await fetch("/api/admin/settings", {
         method: "PUT",
@@ -208,10 +198,8 @@ export default function AdminSettingsPage() {
         }),
       });
       if (!res.ok) throw new Error("API error");
-      setSettingsFallback(false);
     } catch {
-      setSettingsError("Could not save settings to API. Changes are not persisted.");
-      setSettingsFallback(true);
+      // Handle error silently for now
     }
   }
 

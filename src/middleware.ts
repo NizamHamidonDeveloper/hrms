@@ -11,7 +11,7 @@ export default withAuth(
     // Defensive: get roleId as number if present
     let roleId: number | undefined = undefined;
     if (token && typeof token === 'object' && token.profile && typeof token.profile === 'object' && 'role_id' in token.profile) {
-      const rawRoleId = (token.profile as any).role_id;
+      const rawRoleId = (token.profile as { role_id?: number }).role_id;
       if (rawRoleId !== undefined && rawRoleId !== null && !isNaN(Number(rawRoleId))) {
         roleId = Number(rawRoleId);
       }

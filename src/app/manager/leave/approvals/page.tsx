@@ -106,15 +106,15 @@ const ManagerLeaveApprovalsPage = () => {
     return matchEmployee && matchType && matchStatus;
   });
 
-  const handleApprove = (req: LeaveRequest) => {
+  const handleApprove = () => {
     // Implement approve logic
   };
 
-  const handleReject = (req: LeaveRequest) => {
+  const handleReject = () => {
     // Implement reject logic
   };
 
-  const openModal = (req: LeaveRequest) => {
+  const openModal = () => {
     // Implement open modal logic
   };
 
@@ -249,21 +249,21 @@ const ManagerLeaveApprovalsPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex items-center gap-2">
                       <button 
                         className="rounded-full bg-gradient-to-r from-teal-500 to-teal-400 text-white shadow px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2" 
-                        onClick={() => handleApprove(req)}
+                        onClick={() => handleApprove()}
                         aria-label={`Approve leave request for ${req.employee.name}`}
                       >
                         <i className="fas fa-check" aria-hidden="true"></i> Approve
                       </button>
                       <button 
                         className="rounded-full bg-gradient-to-r from-red-500 to-red-400 text-white shadow px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" 
-                        onClick={() => handleReject(req)}
+                        onClick={() => handleReject()}
                         aria-label={`Reject leave request for ${req.employee.name}`}
                       >
                         <i className="fas fa-times" aria-hidden="true"></i> Reject
                       </button>
                       <button 
                         className="rounded-full border border-theme text-theme bg-white dark:bg-gray-900 shadow px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2" 
-                        onClick={() => openModal(req)}
+                        onClick={() => openModal()}
                         aria-label={`View details of leave request for ${req.employee.name}`}
                       >
                         <i className="fas fa-eye" aria-hidden="true"></i> View

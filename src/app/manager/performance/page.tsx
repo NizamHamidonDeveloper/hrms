@@ -213,7 +213,7 @@ export default function PerformancePage() {
   return (
     <main className="p-8 max-w-6xl mx-auto min-h-screen bg-white dark:bg-gray-900" role="main" aria-labelledby="page-title">
       <h1 id="page-title" className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Performance Reviews</h1>
-      <p className="text-gray-600 dark:text-gray-300 mb-6">Manage and review your team's performance cycles and feedback.</p>
+      <p className="text-gray-600 dark:text-gray-300 mb-6">Manage and review your team&apos;s performance cycles and feedback.</p>
       {fallbackWarning && (
         <div className="mb-4 p-3 bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 rounded" role="alert">{fallbackWarning}</div>
       )}
@@ -223,7 +223,7 @@ export default function PerformancePage() {
         </div>
       )}
       <div className="mb-6">
-        <p className="text-gray-600 dark:text-gray-300">Manage and review your team's performance cycles here.</p>
+        <p className="text-gray-600 dark:text-gray-300">Manage and review your team&apos;s performance cycles here.</p>
       </div>
       {/* Filters for review cycles */}
       <div className="flex flex-wrap gap-4 mb-4 items-end" role="search" aria-label="Review cycles filters">

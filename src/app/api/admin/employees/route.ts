@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions, hasRole } from '@/lib/auth';
 
 // In-memory mock data (module-level, resets on server restart)
 const employees = [

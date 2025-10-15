@@ -5,6 +5,7 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { RoleContext } from "@/components/common/RoleProvider";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { ROLE_ID } from '@/lib/roles';
 
 const leaveTypes = ["All Types", "Annual Leave", "Sick Leave", "Emergency Leave"];
 const statuses = ["All", "Pending", "Approved", "Rejected", "Cancelled"];
@@ -134,7 +135,7 @@ export default function AdminLeaveApprovalsPage() {
     <div className="p-4 sm:p-8 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">Global Leave Approvals</h1>
       <p className="text-gray-600 mb-8">Admins can view and act on all leave requests across the organization. Use the filters below to find requests and take action.</p>
-      {activeRole !== 'hr_admin' && (
+      {activeRole !== ROLE_ID.HR_ADMIN && (
         <div className="mb-8 p-4 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg text-center">
           <strong>Access Restricted:</strong> Only HR Admins can approve or reject leave requests.
         </div>
@@ -200,7 +201,7 @@ export default function AdminLeaveApprovalsPage() {
                       {req.status}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2 align-middle">
-                      {req.status === "Pending" && activeRole === 'hr_admin' && (
+                      {req.status === "Pending" && activeRole === ROLE_ID.HR_ADMIN && (
                         <div className="flex gap-2 items-center">
                           <button
                             className="rounded-full bg-gradient-to-r from-teal-500 to-teal-400 text-white shadow px-4 py-2 text-sm font-semibold flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 transition-shadow"

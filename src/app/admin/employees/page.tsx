@@ -66,29 +66,31 @@ export default function AdminEmployeesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Mock data for fallback
-  const mockEmployees: Employee[] = [
-    {
-      id: '1',
-      userId: 'EMP001',
-      firstName: 'John',
-      lastName: 'Doe',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      department: 'Engineering',
-      role: 'employee',
-      reportingManager: 'Jane Smith',
-      status: 'active',
-      state: 'Selangor',
-      gender: 'Male',
-      race: 'Malay',
-      initialPassword: '',
-    },
-    // Add more mock employees as needed
-  ];
+  // Mock data for fallback - moved inside useEffect to avoid dependency issues
 
   // Fetch employees with fallback
   useEffect(() => {
+    // Mock data for fallback
+    const mockEmployees: Employee[] = [
+      {
+        id: '1',
+        userId: 'EMP001',
+        firstName: 'John',
+        lastName: 'Doe',
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        department: 'Engineering',
+        role: 'employee',
+        reportingManager: 'Jane Smith',
+        status: 'active',
+        state: 'Selangor',
+        gender: 'Male',
+        race: 'Malay',
+        initialPassword: '',
+      },
+      // Add more mock employees as needed
+    ];
+
     setLoading(true);
     setError(null);
     fetch('/api/admin/employees')
@@ -192,7 +194,7 @@ export default function AdminEmployeesPage() {
       setEmployees(prev => [...prev, newEmployee]);
       closeAddModal();
       toast.success('Employee added successfully.');
-    } catch (err) {
+    } catch {
       setModalLoading(false);
       toast.error('Failed to add employee.');
     }
@@ -229,7 +231,7 @@ export default function AdminEmployeesPage() {
       setEmployees(prev => prev.map(emp => emp.id === updatedEmployee.id ? updatedEmployee : emp));
       closeEditModal();
       toast.success('Employee updated successfully.');
-    } catch (err) {
+    } catch {
       setModalLoading(false);
       toast.error('Failed to update employee.');
     }
@@ -259,7 +261,7 @@ export default function AdminEmployeesPage() {
       setEmployees(prev => prev.filter(emp => emp.id !== deleteTarget.id));
       closeDeleteModal();
       toast.success('Employee deleted successfully.');
-    } catch (err) {
+    } catch {
       setModalLoading(false);
       toast.error('Failed to delete employee.');
     }
