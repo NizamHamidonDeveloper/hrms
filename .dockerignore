@@ -34,3 +34,7 @@ mockup/
 
 # Docs
 docs/
+
+# Railway specific
+railway.json
+nixpacks.toml
