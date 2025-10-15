@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave History - Sarah Chen (Viewed by John Doe)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">John Doe</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="manager_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+             <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="manager_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="manager_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="manager_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="manager_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="manager_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Team Management</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="manager_team_approvals.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-check-circle"></i><span>Team Leave Approvals</span></a></li>
+                            <li><a href="manager_manage_team.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-users"></i><span>Manage Team</span></a></li> <!-- Active Page -->
+                            <li><a href="manager_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar-alt"></i><span>Team Calendar</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6">
+                <div class="flex items-center space-x-3">
+                    <a href="manager_manage_team.html" class="text-blue-600 hover:text-blue-800">
+                        <i class="fas fa-arrow-left"></i> Back to Manage Team
+                    </a>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800 mt-2">Leave History - Sarah Chen</h1>
+                <p class="text-gray-600">Viewing leave records for Sarah Chen (EMP00123).</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="filterStatus" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="filterStatus" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>All</option>
+                            <option>Approved</option>
+                            <option>Pending</option>
+                            <option>Rejected</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filterLeaveType" class="block text-sm font-medium text-gray-700">Leave Type</label>
+                        <select id="filterLeaveType" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>All</option>
+                            <option>Annual Leave</option>
+                            <option>Sick Leave</option>
+                            <option>Emergency Leave</option>
+                            <option>Maternity Leave</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filterDateRange" class="block text-sm font-medium text-gray-700">Date Range</label>
+                        <input type="text" id="filterDateRange" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" placeholder="e.g., YYYY or YYYY-MM">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leave History Table for Sarah Chen -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">App ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Leave Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reason</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actioned By</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">LVE-SC001</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Annual Leave</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-05-22</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-05-24</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3 Days</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate max-w-xs" title="Personal trip to visit family for a wedding.">Personal trip...</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-05-10</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-blue-600 hover:text-blue-900" onclick="viewApplicationDetails('LVE-SC001')">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">LVE-SC002</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sick Leave</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-15</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-15</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1 Day</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate max-w-xs" title="Flu symptoms.">Flu symptoms.</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Approved</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-14</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-blue-600 hover:text-blue-900" onclick="viewApplicationDetails('LVE-SC002')">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">LVE-SC003</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Annual Leave</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-02-10</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-02-11</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 Days</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate max-w-xs" title="Short break.">Short break.</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-01-20</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-blue-600 hover:text-blue-900" onclick="viewApplicationDetails('LVE-SC003')">View</button>
+                            </td>
+                        </tr>
+                        <!-- More rows for Sarah Chen's history -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-6 flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">12</span> results
+                </div>
+                <div class="flex space-x-1">
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-500 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Application Details Modal -->
+    <div id="applicationDetailsModal" class="fixed z-20 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fas fa-file-invoice text-blue-600"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalAppTitle">Leave Application Details</h3>
+                            <div class="mt-2 text-sm text-gray-700" id="modalAppContent">
+                                <!-- Dynamic content here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeApplicationDetailsModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        const appDetailsModal = document.getElementById('applicationDetailsModal');
+        const modalAppTitle = document.getElementById('modalAppTitle');
+        const modalAppContent = document.getElementById('modalAppContent');
+
+        // Placeholder data for applications (in a real app, this would come from a backend)
+        const sarahLeaveData = {
+            'LVE-SC001': { type: 'Annual Leave', dates: '2025-05-22 to 2025-05-24', duration: '3 Days', reason: 'Personal trip to visit family for a wedding.', status: 'Pending', submitted: '2025-05-10', attachments: ['wedding_invite.pdf'], comments: 'Looking forward to this!' },
+            'LVE-SC002': { type: 'Sick Leave', dates: '2025-04-15', duration: '1 Day', reason: 'Flu symptoms.', status: 'Approved', submitted: '2025-04-14', actionedBy: 'John Doe', attachments: ['mc_cert.pdf'], comments: 'Approved. Get well soon.' },
+            'LVE-SC003': { type: 'Annual Leave', dates: '2025-02-10 to 2025-02-11', duration: '2 Days', reason: 'Short break.', status: 'Rejected', submitted: '2025-01-20', actionedBy: 'John Doe', attachments: [], comments: 'Rejected due to critical project deadlines.' }
+        };
+
+        function viewApplicationDetails(appId) {
+            const app = sarahLeaveData[appId];
+            if (app) {
+                modalAppTitle.textContent = `Details for Application ID: ${appId}`;
+                modalAppContent.innerHTML = `
+                    <p><strong>Employee:</strong> Sarah Chen (EMP00123)</p>
+                    <p><strong>Leave Type:</strong> ${app.type}</p>
+                    <p><strong>Dates:</strong> ${app.dates}</p>
+                    <p><strong>Duration:</strong> ${app.duration}</p>
+                    <p><strong>Reason:</strong> ${app.reason}</p>
+                    <p><strong>Status:</strong> ${app.status}</p>
+                    <p><strong>Submitted On:</strong> ${app.submitted}</p>
+                    ${app.actionedBy ? `<p><strong>Actioned By:</strong> ${app.actionedBy}</p>` : ''}
+                    <p><strong>Attachments:</strong> ${app.attachments.length > 0 ? app.attachments.join(', ') : 'None'}</p>
+                    <p><strong>Comments:</strong> ${app.comments || 'N/A'}</p>
+                `;
+                appDetailsModal.classList.remove('hidden');
+            } else {
+                alert('Application details not found.');
+            }
+        }
+
+        function closeApplicationDetailsModal() {
+            appDetailsModal.classList.add('hidden');
+        }
+        
+        // Close modal on escape key
+        window.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !appDetailsModal.classList.contains('hidden')) {
+                closeApplicationDetailsModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+        <div class="flex justify-center mb-6">
+            <img class="h-12 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+        </div>
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">HRMS Portal Login</h2>
+        
+        <form id="loginForm">
+            <div class="mb-6">
+                <label for="userRole" class="block text-sm font-medium text-gray-700 mb-1">Select Your Role</label>
+                <select id="userRole" name="userRole" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                    <option value="">-- Select Role --</option>
+                    <option value="employee">Employee (Sarah Chen)</option>
+                    <option value="manager">Manager (John Doe)</option>
+                    <option value="hr_admin">HR Admin (Emily Carter)</option>
+                </select>
+            </div>
+
+            <!-- Placeholder for username/password if needed in future -->
+            <!-- 
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">Username/Email</label>
+                <input type="text" name="username" id="username" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your username or email">
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your password">
+            </div>
+            -->
+
+            <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Login
+                </button>
+            </div>
+        </form>
+        <p class="mt-6 text-center text-xs text-gray-500">
+            This is a mockup. Select a role to proceed to the respective dashboard.
+        </p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedRole = document.getElementById('userRole').value;
+
+            if (!selectedRole) {
+                alert('Please select a user role.');
+                return;
+            }
+
+            let dashboardUrl = '';
+            switch (selectedRole) {
+                case 'employee':
+                    dashboardUrl = 'employee/employee_dashboard.html';
+                    break;
+                case 'manager':
+                    dashboardUrl = 'manager/manager_dashboard.html';
+                    break;
+                case 'hr_admin':
+                    dashboardUrl = 'hr_admin/hr_admin_dashboard.html';
+                    break;
+                default:
+                    alert('Invalid role selected.');
+                    return;
+            }
+            window.location.href = dashboardUrl;
+        });
+    </script>
+</body>
+</html>

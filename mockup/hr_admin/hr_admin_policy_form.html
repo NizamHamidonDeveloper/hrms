@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Policy Form - HR Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Emily Carter</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="hr_admin_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="hr_admin_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Personal Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_apply_my_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="hr_admin_my_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="hr_admin_my_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="hr_admin_my_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Administration</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_user_management.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-users-cog"></i><span>User Management</span></a></li>
+                            <li><a href="hr_admin_leave_policies.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-file-contract"></i><span>Leave Policies</span></a></li>
+                            <li><a href="hr_admin_reports_hub.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-bar"></i><span>System Reports</span></a></li>
+                            <li><a href="hr_admin_all_leaves.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-envelope-open-text"></i><span>All Leave Applications</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6">
+                     <a href="hr_admin_leave_policies.html" class="text-sm text-blue-600 hover:text-blue-800 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Leave Policies
+                    </a>
+                    <h1 id="policyFormTitle" class="text-2xl font-bold text-gray-800 mt-2">Add New Leave Policy</h1>
+                    <p id="policyFormSubtitle" class="text-gray-600">Define the rules and parameters for a new leave policy.</p>
+                </div>
+
+                <!-- Policy Form -->
+                <form id="policyForm" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 space-y-6">
+                    <div>
+                        <label for="policyName" class="block text-sm font-medium text-gray-700">Policy Name *</label>
+                        <input type="text" name="policyName" id="policyName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., Annual Leave, Sick Leave" required>
+                    </div>
+                     <div>
+                        <label for="policyId" class="block text-sm font-medium text-gray-700">Policy ID (System Use) *</label>
+                        <input type="text" name="policyId" id="policyId" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., annual_leave (lowercase, underscores)" required>
+                         <p class="mt-1 text-xs text-gray-500">Unique identifier for the policy. Cannot be changed after creation.</p>
+                    </div>
+
+                    <div>
+                        <label for="policyDescription" class="block text-sm font-medium text-gray-700">Description *</label>
+                        <textarea id="policyDescription" name="policyDescription" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Brief overview of the leave policy." required></textarea>
+                    </div>
+
+                    <div>
+                        <label for="entitlementRules" class="block text-sm font-medium text-gray-700">Entitlement Rules *</label>
+                        <textarea id="entitlementRules" name="entitlementRules" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Detail the entitlement logic, e.g., days per year, accrual rates, based on tenure, pro-rata logic, carry-forward rules." required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="conditionsProcedures" class="block text-sm font-medium text-gray-700">Conditions & Procedures</label>
+                        <textarea id="conditionsProcedures" name="conditionsProcedures" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Specify any conditions, application procedures, approval workflows, or limitations."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="documentationRequired" class="block text-sm font-medium text-gray-700">Documentation Requirements</label>
+                        <input type="text" name="documentationRequired" id="documentationRequired" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., Medical Certificate, Official Invitation">
+                    </div>
+                    
+                    <div>
+                        <label for="policyStatus" class="block text-sm font-medium text-gray-700">Policy Status</label>
+                        <select id="policyStatus" name="policyStatus" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="Active">Active</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Archived">Archived</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end space-x-3">
+                            <a href="hr_admin_leave_policies.html" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                Cancel
+                            </a>
+                            <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <i class="fas fa-save mr-2"></i>Save Policy
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        const policyForm = document.getElementById('policyForm');
+        const policyFormTitle = document.getElementById('policyFormTitle');
+        const policyFormSubtitle = document.getElementById('policyFormSubtitle');
+        const policyIdInput = document.getElementById('policyId');
+
+        // Placeholder data for policies (from hr_admin_leave_policies.html for consistency)
+        const policiesData = {
+            'annual_leave': { name: 'Annual Leave Policy', description: 'Paid time off for vacation, personal errands, and rest. Accrual rates increase with years of service. Maximum carry-forward of 5 days to the next calendar year, subject to approval.', entitlement: '1-3 Years Service: 14 days/year. 4-7 Years Service: 18 days/year. 8+ Years Service: 22 days/year. Pro-rated for new hires.', conditions: 'Must be applied for at least 2 weeks in advance, unless for urgent matters. Minimum 0.5 day application. Subject to manager approval and team schedule.', documentation: 'No specific documents required for standard annual leave.', status: 'Active' },
+            'sick_leave': { name: 'Sick Leave Policy', description: 'Paid time off for personal illness or injury, or to care for an immediate family member who is ill. Employees are expected to notify their manager as early as possible on the first day of absence.', entitlement: '14 days per calendar year. Unused sick leave is not carried forward.', conditions: 'For absences of 3 or more consecutive days, a medical certificate from a registered practitioner is required. For shorter absences, self-certification is usually sufficient.', documentation: 'Medical Certificate (for >2 days), Self-declaration.', status: 'Active' },
+            'maternity_leave': { name: 'Maternity Leave Policy', description: 'Provides eligible female employees with paid time off for childbirth and recovery. Aligns with national statutory requirements.', entitlement: '90 consecutive calendar days of paid leave. Can commence up to 30 days before the expected due date.', conditions: 'Employee must have completed at least 90 days of continuous service. Notification to HR at least 4 months before expected delivery.', documentation: 'Doctor\'s letter confirming pregnancy and expected due date. Birth certificate after delivery.', status: 'Active' },
+            'unpaid_leave': { name: 'Unpaid Leave Policy', description: 'Allows employees to request time off without pay for reasons not covered by other leave policies, such as extended travel, personal development, or family emergencies beyond standard entitlements.', entitlement: 'Granted on a case-by-case basis, subject to operational requirements and management discretion. Duration is mutually agreed upon.', conditions: 'Must be discussed and approved by the reporting manager and HR well in advance. Employee benefits (e.g., health insurance) may be affected during extended unpaid leave.', documentation: 'Formal written request outlining the reason and duration.', status: 'Requires Approval' } // Note: Status might be 'Active' with conditions
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editPolicyId = urlParams.get('id');
+
+        if (editPolicyId && policiesData[editPolicyId]) {
+            const policy = policiesData[editPolicyId];
+            policyFormTitle.textContent = `Edit Leave Policy - ${policy.name}`;
+            policyFormSubtitle.textContent = `Update the details for the ${policy.name}.`;
+            
+            policyIdInput.value = editPolicyId;
+            policyIdInput.setAttribute('readonly', true);
+            policyIdInput.classList.add('bg-gray-100');
+
+            document.getElementById('policyName').value = policy.name;
+            document.getElementById('policyDescription').value = policy.description;
+            document.getElementById('entitlementRules').value = policy.entitlement;
+            document.getElementById('conditionsProcedures').value = policy.conditions || '';
+            document.getElementById('documentationRequired').value = policy.documentation || '';
+            document.getElementById('policyStatus').value = policy.status || 'Active';
+        } else if (editPolicyId) {
+            // Policy ID in URL but not found in data - could be an error or new policy with prefilled ID
+            policyFormTitle.textContent = `Edit Leave Policy - ${editPolicyId}`;
+            policyFormSubtitle.textContent = `Details for policy ID "${editPolicyId}" not found. You can create it as a new policy.`;
+            policyIdInput.value = editPolicyId;
+        }
+
+
+        policyForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(policyForm);
+            const policyData = Object.fromEntries(formData.entries());
+
+            if (editPolicyId) {
+                alert(`Policy "${policyData.policyName}" updated successfully! (Simulated)`);
+            } else {
+                alert(`New policy "${policyData.policyName}" created successfully! (Simulated)`);
+            }
+            window.location.href = 'hr_admin_leave_policies.html';
+        });
+    </script>
+</body>
+</html>

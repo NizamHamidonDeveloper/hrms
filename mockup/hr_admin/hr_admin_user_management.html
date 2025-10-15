@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User & Role Management - HR Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Emily Carter</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="hr_admin_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="hr_admin_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Personal Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_apply_my_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="hr_admin_my_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="hr_admin_my_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="hr_admin_my_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Administration</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_user_management.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-users-cog"></i><span>User Management</span></a></li>
+                            <li><a href="hr_admin_leave_policies.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-file-contract"></i><span>Leave Policies</span></a></li>
+                            <li><a href="hr_admin_reports_hub.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-bar"></i><span>System Reports</span></a></li>
+                            <li><a href="hr_admin_all_leaves.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-envelope-open-text"></i><span>All Leave Applications</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">User & Role Management</h1>
+                    <p class="text-gray-600">Manage all system users and their roles.</p>
+                </div>
+                <a href="hr_admin_user_form.html" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                    <i class="fas fa-user-plus mr-2"></i>Add New User
+                </a>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label for="searchUser" class="block text-sm font-medium text-gray-700">Search User</label>
+                        <input type="text" id="searchUser" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" placeholder="Name, ID, or Email">
+                    </div>
+                    <div>
+                        <label for="filterRole" class="block text-sm font-medium text-gray-700">Role</label>
+                        <select id="filterRole" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>All Roles</option>
+                            <option>Employee</option>
+                            <option>Manager</option>
+                            <option>HR Admin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filterDepartment" class="block text-sm font-medium text-gray-700">Department</label>
+                        <select id="filterDepartment" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>All Departments</option>
+                            <option>Engineering</option>
+                            <option>Human Resources</option>
+                            <option>Sales</option>
+                            <option>Marketing</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filterStatus" class="block text-sm font-medium text-gray-700">Status</label>
+                         <select id="filterStatus" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option>All Statuses</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Manager</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr id="user-EMP00123">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EMP00123</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sarah Chen</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">sarah.chen@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Employee</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Engineering</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 status-active">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_user_form.html?id=EMP00123" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-red-600 hover:text-red-900" onclick="toggleUserStatus('EMP00123', 'Active')"><i class="fas fa-power-off"></i> Deactivate</button>
+                            </td>
+                        </tr>
+                        <tr id="user-MGR00045">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">MGR00045</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">john.doe@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Manager</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Engineering</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Jane Smith</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 status-active">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_user_form.html?id=MGR00045" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-red-600 hover:text-red-900" onclick="toggleUserStatus('MGR00045', 'Active')"><i class="fas fa-power-off"></i> Deactivate</button>
+                            </td>
+                        </tr>
+                        <tr id="user-ADM00001">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">ADM00001</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Emily Carter</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">emily.carter@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">HR Admin</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Human Resources</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">CEO</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 status-active">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_user_form.html?id=ADM00001" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <!-- HR Admin cannot deactivate self -->
+                            </td>
+                        </tr>
+                         <tr id="user-EMP00888">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EMP00888</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">David Lee</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">david.lee@example.com</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Employee</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sales</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Laura Palmer</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 status-inactive">Inactive</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_user_form.html?id=EMP00888" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-green-600 hover:text-green-900" onclick="toggleUserStatus('EMP00888', 'Inactive')"><i class="fas fa-power-off"></i> Activate</button>
+                            </td>
+                        </tr>
+                        <!-- More users -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-6 flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">4</span> of <span class="font-medium">152</span> users
+                </div>
+                <div class="flex space-x-1">
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-500 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        function toggleUserStatus(userId, currentStatus) {
+            const userName = document.querySelector(`#user-${userId} td:nth-child(2)`).textContent;
+            const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
+            const action = currentStatus === 'Active' ? 'Deactivate' : 'Activate';
+            
+            if (confirm(`Are you sure you want to ${action.toLowerCase()} user ${userName} (${userId})?`)) {
+                // Simulate status change
+                const statusCell = document.querySelector(`#user-${userId} td:nth-child(7) span`);
+                const actionButton = document.querySelector(`#user-${userId} td:nth-child(8) button`);
+
+                if (newStatus === 'Active') {
+                    statusCell.classList.remove('bg-red-100', 'text-red-800', 'status-inactive');
+                    statusCell.classList.add('bg-green-100', 'text-green-800', 'status-active');
+                    statusCell.textContent = 'Active';
+                    actionButton.innerHTML = '<i class="fas fa-power-off"></i> Deactivate';
+                    actionButton.classList.remove('text-green-600', 'hover:text-green-900');
+                    actionButton.classList.add('text-red-600', 'hover:text-red-900');
+                    actionButton.setAttribute('onclick', `toggleUserStatus('${userId}', 'Active')`);
+                } else {
+                    statusCell.classList.remove('bg-green-100', 'text-green-800', 'status-active');
+                    statusCell.classList.add('bg-red-100', 'text-red-800', 'status-inactive');
+                    statusCell.textContent = 'Inactive';
+                    actionButton.innerHTML = '<i class="fas fa-power-off"></i> Activate';
+                    actionButton.classList.remove('text-red-600', 'hover:text-red-900');
+                    actionButton.classList.add('text-green-600', 'hover:text-green-900');
+                    actionButton.setAttribute('onclick', `toggleUserStatus('${userId}', 'Inactive')`);
+                }
+                alert(`User ${userName} has been ${action.toLowerCase()}d. (Simulated)`);
+            }
+        }
+    </script>
+</body>
+</html>

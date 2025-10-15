@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Policy Management - HR Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Emily Carter</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="hr_admin_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="hr_admin_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Personal Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_apply_my_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="hr_admin_my_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="hr_admin_my_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="hr_admin_my_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Administration</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_user_management.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-users-cog"></i><span>User Management</span></a></li>
+                            <li><a href="hr_admin_leave_policies.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-file-contract"></i><span>Leave Policies</span></a></li>
+                            <li><a href="hr_admin_reports_hub.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-bar"></i><span>System Reports</span></a></li>
+                            <li><a href="hr_admin_all_leaves.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-envelope-open-text"></i><span>All Leave Applications</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Leave Policy Management</h1>
+                    <p class="text-gray-600">Configure and manage all leave policies for the organization.</p>
+                </div>
+                <a href="hr_admin_policy_form.html" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                    <i class="fas fa-plus mr-2"></i>Add New Leave Policy
+                </a>
+            </div>
+
+            <!-- Policies List/Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Policy Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Key Entitlement Rule</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Updated</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Annual Leave</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-md truncate" title="Paid time off for vacation and personal needs.">Paid time off for vacation and personal needs. Accrues based on years of service.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14-25 days/year based on tenure</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-15</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_policy_form.html?id=annual_leave" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-gray-500 hover:text-gray-700" onclick="viewPolicyDetails('annual_leave')"><i class="fas fa-eye"></i> View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sick Leave</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-md truncate" title="Paid time off for illness or medical appointments.">Paid time off for illness or medical appointments. Medical certificate may be required.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">14 days/year</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-12-01</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_policy_form.html?id=sick_leave" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-gray-500 hover:text-gray-700" onclick="viewPolicyDetails('sick_leave')"><i class="fas fa-eye"></i> View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Maternity Leave</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-md truncate" title="Leave for expectant and new mothers.">Leave for expectant and new mothers, as per statutory requirements.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">90 calendar days</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-01-10</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_policy_form.html?id=maternity_leave" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-gray-500 hover:text-gray-700" onclick="viewPolicyDetails('maternity_leave')"><i class="fas fa-eye"></i> View</button>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Unpaid Leave</td>
+                            <td class="px-6 py-4 text-sm text-gray-500 max-w-md truncate" title="Time off without pay, subject to approval.">Time off without pay for extended personal reasons, subject to management approval.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Case-by-case basis</td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Requires Approval</span></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2022-06-01</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="hr_admin_policy_form.html?id=unpaid_leave" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="text-gray-500 hover:text-gray-700" onclick="viewPolicyDetails('unpaid_leave')"><i class="fas fa-eye"></i> View</button>
+                            </td>
+                        </tr>
+                        <!-- More policies -->
+                    </tbody>
+                </table>
+            </div>
+             <!-- Pagination -->
+            <div class="mt-6 flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">4</span> of <span class="font-medium">8</span> policies
+                </div>
+                <div class="flex space-x-1">
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-500 bg-white hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Policy Details Modal -->
+    <div id="policyDetailsModal" class="fixed z-20 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fas fa-file-alt text-blue-600"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalPolicyName">Policy Details</h3>
+                            <div class="mt-2 text-sm text-gray-600 space-y-3" id="modalPolicyContent">
+                                <!-- Dynamic content here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <a id="modalEditLink" href="#" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        Edit Policy
+                    </a>
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm" onclick="closePolicyModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        const policyModal = document.getElementById('policyDetailsModal');
+        const modalPolicyName = document.getElementById('modalPolicyName');
+        const modalPolicyContent = document.getElementById('modalPolicyContent');
+        const modalEditLink = document.getElementById('modalEditLink');
+
+        // Placeholder data for policies
+        const policiesData = {
+            'annual_leave': { 
+                name: 'Annual Leave Policy', 
+                description: 'Paid time off for vacation, personal errands, and rest. Accrual rates increase with years of service. Maximum carry-forward of 5 days to the next calendar year, subject to approval.',
+                entitlement: '1-3 Years Service: 14 days/year. 4-7 Years Service: 18 days/year. 8+ Years Service: 22 days/year. Pro-rated for new hires.',
+                conditions: 'Must be applied for at least 2 weeks in advance, unless for urgent matters. Minimum 0.5 day application. Subject to manager approval and team schedule.',
+                documentation: 'No specific documents required for standard annual leave.'
+            },
+            'sick_leave': {
+                name: 'Sick Leave Policy',
+                description: 'Paid time off for personal illness or injury, or to care for an immediate family member who is ill. Employees are expected to notify their manager as early as possible on the first day of absence.',
+                entitlement: '14 days per calendar year. Unused sick leave is not carried forward.',
+                conditions: 'For absences of 3 or more consecutive days, a medical certificate from a registered practitioner is required. For shorter absences, self-certification is usually sufficient.',
+                documentation: 'Medical Certificate (for >2 days), Self-declaration.'
+            },
+             'maternity_leave': {
+                name: 'Maternity Leave Policy',
+                description: 'Provides eligible female employees with paid time off for childbirth and recovery. Aligns with national statutory requirements.',
+                entitlement: '90 consecutive calendar days of paid leave. Can commence up to 30 days before the expected due date.',
+                conditions: 'Employee must have completed at least 90 days of continuous service. Notification to HR at least 4 months before expected delivery.',
+                documentation: 'Doctor\'s letter confirming pregnancy and expected due date. Birth certificate after delivery.'
+            },
+            'unpaid_leave': {
+                name: 'Unpaid Leave Policy',
+                description: 'Allows employees to request time off without pay for reasons not covered by other leave policies, such as extended travel, personal development, or family emergencies beyond standard entitlements.',
+                entitlement: 'Granted on a case-by-case basis, subject to operational requirements and management discretion. Duration is mutually agreed upon.',
+                conditions: 'Must be discussed and approved by the reporting manager and HR well in advance. Employee benefits (e.g., health insurance) may be affected during extended unpaid leave.',
+                documentation: 'Formal written request outlining the reason and duration.'
+            }
+        };
+
+        function viewPolicyDetails(policyId) {
+            const policy = policiesData[policyId];
+            if (policy) {
+                modalPolicyName.textContent = policy.name;
+                modalPolicyContent.innerHTML = `
+                    <p><strong>Description:</strong> ${policy.description}</p>
+                    <p><strong>Entitlement Rules:</strong> ${policy.entitlement}</p>
+                    <p><strong>Conditions & Procedures:</strong> ${policy.conditions}</p>
+                    <p><strong>Documentation Required:</strong> ${policy.documentation}</p>
+                `;
+                modalEditLink.href = `hr_admin_policy_form.html?id=${policyId}`;
+                policyModal.classList.remove('hidden');
+            }
+        }
+
+        function closePolicyModal() {
+            policyModal.classList.add('hidden');
+        }
+
+        // Close modal on escape key
+        window.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !policyModal.classList.contains('hidden')) {
+                closePolicyModal();
+            }
+        });
+    </script>
+</body>
+</html>

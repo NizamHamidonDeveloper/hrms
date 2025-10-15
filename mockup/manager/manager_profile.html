@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - John Doe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">John Doe</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="manager_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="manager_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li>
+                                <a href="manager_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Apply for My Leave</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-list"></i>
+                                    <span>My Leave Summary</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>My Calendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>My Leave Balance</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Team Management</span>
+                        <ul class="mt-2 space-y-1">
+                            <li>
+                                <a href="manager_team_approvals.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Team Leave Approvals</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_manage_team.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-users"></i>
+                                    <span>Manage Team</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Team Calendar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6 flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">My Profile</h1>
+                        <p class="text-gray-600">John Doe - Engineering Manager</p>
+                    </div>
+                    <button class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <i class="fas fa-edit mr-2"></i>Edit Profile
+                    </button>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Personal Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Full Name</label>
+                            <p class="mt-1 text-sm text-gray-900">John Doe</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Role</label>
+                            <p class="mt-1 text-sm text-gray-900">Engineering Manager</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Department</label>
+                            <p class="mt-1 text-sm text-gray-900">Engineering</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Employee ID</label>
+                            <p class="mt-1 text-sm text-gray-900">MGR00045</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Email Address</label>
+                            <p class="mt-1 text-sm text-gray-900">john.doe@example.com</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Reporting Manager</label>
+                            <p class="mt-1 text-sm text-gray-900">Jane Smith (Director)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direct Reports -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Direct Reports (5)</h2>
+                    <ul class="divide-y divide-gray-200">
+                        <li class="py-3 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <span class="text-blue-600 font-medium">SC</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Sarah Chen</p>
+                                    <p class="text-sm text-gray-500">Software Engineer</p>
+                                </div>
+                            </div>
+                            <a href="manager_employee_leave_history_sarah.html" class="text-sm font-medium text-blue-600 hover:text-blue-500">View History</a>
+                        </li>
+                        <li class="py-3 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                    <span class="text-green-600 font-medium">MJ</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Michael Johnson</p>
+                                    <p class="text-sm text-gray-500">Senior Developer</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">View History</a>
+                        </li>
+                        <li class="py-3 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                    <span class="text-purple-600 font-medium">LW</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Lisa Wong</p>
+                                    <p class="text-sm text-gray-500">QA Engineer</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">View History</a>
+                        </li>
+                         <li class="py-3 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                    <span class="text-yellow-600 font-medium">DB</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">David Brown</p>
+                                    <p class="text-sm text-gray-500">DevOps Engineer</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">View History</a>
+                        </li>
+                         <li class="py-3 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-medium">EM</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Emily Miller</p>
+                                    <p class="text-sm text-gray-500">UI/UX Designer</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">View History</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Optional: Emergency Contact / Address -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Additional Information (Optional)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Emergency Contact</label>
+                            <p class="mt-1 text-sm text-gray-900">Jane Doe (Spouse) - +1-202-555-0147</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500">Home Address</label>
+                            <p class="mt-1 text-sm text-gray-900">123 Tech Park Avenue, Silicon Valley, CA 94000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Highlight active sidebar link (example for profile page)
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const currentPath = window.location.pathname.split("/").pop();
+            const sidebarLinks = document.querySelectorAll('aside nav ul a');
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    // For profile, we don't have a direct sidebar link, but this logic can be adapted
+                    // For now, we'll ensure the dashboard is not highlighted if on profile
+                    if (currentPath === 'manager_profile.html') {
+                        const dashboardLink = document.querySelector('a[href="manager_dashboard.html"]');
+                        if(dashboardLink) {
+                            dashboardLink.classList.remove('bg-blue-50', 'text-blue-600');
+                            dashboardLink.classList.add('text-gray-600', 'hover:bg-gray-100');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

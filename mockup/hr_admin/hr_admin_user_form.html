@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form - HR Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Emily Carter</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="hr_admin_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="hr_admin_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Personal Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_apply_my_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="hr_admin_my_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="hr_admin_my_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="hr_admin_my_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Administration</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="hr_admin_user_management.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-users-cog"></i><span>User Management</span></a></li>
+                            <li><a href="hr_admin_leave_policies.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-file-contract"></i><span>Leave Policies</span></a></li>
+                            <li><a href="hr_admin_reports_hub.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-bar"></i><span>System Reports</span></a></li>
+                            <li><a href="hr_admin_all_leaves.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-envelope-open-text"></i><span>All Leave Applications</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="max-w-2xl mx-auto">
+                 <div class="mb-6">
+                    <a href="hr_admin_user_management.html" class="text-sm text-blue-600 hover:text-blue-800 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to User Management
+                    </a>
+                    <h1 id="formTitle" class="text-2xl font-bold text-gray-800 mt-2">Add New User</h1>
+                    <p id="formSubtitle" class="text-gray-600">Enter the details for the new user account.</p>
+                </div>
+
+                <!-- User Form -->
+                <form id="userForm" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 space-y-6">
+                    <div>
+                        <label for="userId" class="block text-sm font-medium text-gray-700">User ID *</label>
+                        <input type="text" name="userId" id="userId" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., EMP00155" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name *</label>
+                            <input type="text" name="firstName" id="firstName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name *</label>
+                            <input type="text" name="lastName" id="lastName" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+                        <input type="email" name="email" id="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="user@example.com" required>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="department" class="block text-sm font-medium text-gray-700">Department *</label>
+                            <select id="department" name="department" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                                <option value="">Select Department</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="role" class="block text-sm font-medium text-gray-700">Role *</label>
+                            <select id="role" name="role" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                                <option value="">Select Role</option>
+                                <option value="Employee">Employee</option>
+                                <option value="Manager">Manager</option>
+                                <option value="HR Admin">HR Admin</option>
+                                <option value="Director">Director</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="reportingManager" class="block text-sm font-medium text-gray-700">Reporting Manager</label>
+                        <select id="reportingManager" name="reportingManager" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="">Select Manager (if applicable)</option>
+                            <option value="MGR00045">John Doe (Engineering Manager)</option>
+                            <option value="DIR00001">Jane Smith (Director)</option>
+                            <option value="HRM00002">Emily Carter (HR Admin - for HR staff)</option>
+                            <!-- Populate with actual managers -->
+                        </select>
+                    </div>
+
+                    <div id="passwordSection">
+                        <label for="initialPassword" class="block text-sm font-medium text-gray-700">Initial Password *</label>
+                        <input type="password" name="initialPassword" id="initialPassword" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Min. 8 characters" required>
+                        <p class="mt-1 text-xs text-gray-500">User will be prompted to change this on first login.</p>
+                    </div>
+                    
+                    <div>
+                        <label for="userStatus" class="block text-sm font-medium text-gray-700">User Status</label>
+                        <select id="userStatus" name="userStatus" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-5">
+                        <div class="flex justify-end space-x-3">
+                            <a href="hr_admin_user_management.html" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                Cancel
+                            </a>
+                            <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <i class="fas fa-save mr-2"></i>Save User
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        const form = document.getElementById('userForm');
+        const formTitle = document.getElementById('formTitle');
+        const formSubtitle = document.getElementById('formSubtitle');
+        const userIdInput = document.getElementById('userId');
+        const passwordSection = document.getElementById('passwordSection');
+        const initialPasswordInput = document.getElementById('initialPassword');
+
+        // Check for URL parameters to determine if it's an edit form
+        const urlParams = new URLSearchParams(window.location.search);
+        const editUserId = urlParams.get('id');
+
+        if (editUserId) {
+            formTitle.textContent = `Edit User - ${editUserId}`;
+            formSubtitle.textContent = `Update the details for user ${editUserId}.`;
+            userIdInput.value = editUserId;
+            userIdInput.setAttribute('readonly', true); // User ID typically not editable
+            userIdInput.classList.add('bg-gray-100');
+            
+            // For edit mode, password might be optional or handled differently
+            passwordSection.classList.add('hidden'); 
+            initialPasswordInput.removeAttribute('required');
+
+
+            // Placeholder: In a real app, fetch user data for `editUserId` and populate the form
+            // Example:
+            if (editUserId === 'EMP00123') {
+                document.getElementById('firstName').value = 'Sarah';
+                document.getElementById('lastName').value = 'Chen';
+                document.getElementById('email').value = 'sarah.chen@example.com';
+                document.getElementById('department').value = 'Engineering';
+                document.getElementById('role').value = 'Employee';
+                document.getElementById('reportingManager').value = 'MGR00045';
+                document.getElementById('userStatus').value = 'Active';
+            } else {
+                 // If user ID not found for edit, redirect or show error
+                // alert('User not found for editing.');
+                // window.location.href = 'hr_admin_user_management.html';
+            }
+        }
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Collect form data
+            const formData = new FormData(form);
+            const userData = Object.fromEntries(formData.entries());
+            
+            if (editUserId) {
+                // Edit user logic
+                alert(`User ${editUserId} details updated successfully! (Simulated)`);
+            } else {
+                // Add new user logic
+                alert(`New user ${userData.firstName} ${userData.lastName} (${userData.userId}) created successfully! (Simulated)`);
+            }
+            // Redirect to user management page
+            window.location.href = 'hr_admin_user_management.html';
+        });
+    </script>
+</body>
+</html>

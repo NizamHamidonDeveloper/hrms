@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar - John Doe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">John Doe</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="manager_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="manager_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li>
+                                <a href="manager_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Apply for My Leave</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-list"></i>
+                                    <span>My Leave Summary</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_calendar.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>My Calendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>My Leave Balance</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Team Management</span>
+                        <ul class="mt-2 space-y-1">
+                            <li>
+                                <a href="manager_team_approvals.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Team Leave Approvals</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_manage_team.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-users"></i>
+                                    <span>Manage Team</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="manager_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Team Calendar</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">My Leave Calendar</h1>
+                <p class="text-gray-600">View your scheduled leaves and public holidays, John Doe.</p>
+            </div>
+
+            <!-- Calendar Navigation -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4 calendar-nav">
+                        <button id="prevMonthBtn" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h2 id="currentMonthYear" class="text-xl font-semibold text-gray-800">May 2025</h2>
+                        <button id="nextMonthBtn" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button id="todayBtn" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            Today
+                        </button>
+                    </div>
+                    <div>
+                        <select id="viewSwitcher" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            <option value="month">Month View</option>
+                            <option value="week">Week View</option>
+                            <option value="day">Day View</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Views -->
+            <div id="monthView" class="calendar-view bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                <!-- Weekday Headers -->
+                <div class="grid grid-cols-7 gap-px bg-gray-200">
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Sun</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Mon</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Tue</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Wed</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Thu</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Fri</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Sat</div>
+                </div>
+                <!-- Calendar Days (Simplified for brevity, similar to employee_calendar.html) -->
+                <div id="monthDaysContainer" class="grid grid-cols-7 gap-px bg-gray-200 min-h-[600px]">
+                    <!-- Placeholder days -->
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">27</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">28</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">29</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">30</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">1</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">2</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">3</div></div>
+                    <!-- ... more days ... -->
+                    <div class="bg-white h-32 p-2">
+                        <div class="flex justify-end">10</div>
+                        <div class="mt-1 text-xs p-1 rounded bg-green-100 text-green-800">My Annual Leave</div>
+                    </div>
+                    <div class="bg-white h-32 p-2">
+                        <div class="flex justify-end">11</div>
+                        <div class="mt-1 text-xs p-1 rounded bg-green-100 text-green-800">My Annual Leave</div>
+                    </div>
+                     <div class="bg-white h-32 p-2">
+                        <div class="flex justify-end">12</div>
+                        <div class="mt-1 text-xs p-1 rounded bg-green-100 text-green-800">My Annual Leave</div>
+                    </div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">13</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">14</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">15</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">16</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">17</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">18</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">19</div></div>
+                    <div class="bg-white h-32 p-2">
+                        <div class="flex justify-end">20</div>
+                         <div class="mt-1 text-xs p-1 rounded bg-yellow-100 text-yellow-800">My Sick Leave (Pending)</div>
+                    </div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">21</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">22</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">23</div></div>
+                    <div class="bg-white h-32 p-2">
+                        <div class="flex justify-end">24</div>
+                        <div class="mt-1 text-xs p-1 rounded bg-purple-100 text-purple-800">Public Holiday</div>
+                    </div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">25</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">26</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">27</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">28</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">29</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">30</div></div>
+                    <div class="bg-white h-32 p-2"><div class="flex justify-end">31</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">1</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">2</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">3</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">4</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">5</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">6</div></div>
+                    <div class="bg-gray-50 h-32 p-2 text-gray-400"><div class="flex justify-end">7</div></div>
+                </div>
+            </div>
+
+            <!-- Week View (Hidden by default) -->
+            <div id="weekView" class="calendar-view bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hidden">
+                <!-- Week view content similar to employee_calendar.html -->
+                 <div class="grid grid-cols-7 gap-px bg-gray-200">
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Time</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Mon 19</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Tue 20</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Wed 21</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Thu 22</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Fri 23</div>
+                    <div class="bg-gray-100 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Sat 24</div>
+                </div>
+                <div class="grid grid-cols-7 gap-px bg-gray-200 h-96 overflow-y-auto">
+                    <div class="bg-gray-50 p-2 text-xs text-gray-500 sticky top-0">8:00 AM</div>
+                    <div class="bg-white p-2 border-r border-gray-100"></div>
+                    <div class="bg-white p-2 border-r border-gray-100">
+                        <div class="text-xs p-1 rounded bg-yellow-100 text-yellow-800">My Sick Leave (Pending)</div>
+                    </div>
+                    <div class="bg-white p-2 border-r border-gray-100"></div>
+                    <div class="bg-white p-2 border-r border-gray-100"></div>
+                    <div class="bg-white p-2 border-r border-gray-100"></div>
+                    <div class="bg-white p-2"></div>
+                    <!-- More time slots -->
+                </div>
+            </div>
+
+            <!-- Day View (Hidden by default) -->
+            <div id="dayView" class="calendar-view bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hidden">
+                <!-- Day view content similar to employee_calendar.html -->
+                <div class="p-4 border-b border-gray-200">
+                    <h3 class="text-lg font-medium">Tuesday, May 20, 2025</h3>
+                </div>
+                <div class="divide-y divide-gray-200 h-96 overflow-y-auto">
+                    <div class="p-4">
+                        <div class="text-sm font-medium">8:00 AM - 5:00 PM</div>
+                        <div class="mt-1 text-sm text-gray-500">Working Hours</div>
+                    </div>
+                    <div class="p-4 bg-yellow-50">
+                        <div class="text-sm font-medium">My Sick Leave (Pending)</div>
+                        <div class="mt-1 text-sm text-gray-500">Submitted: May 19, 2025</div>
+                    </div>
+                    <!-- More time slots -->
+                </div>
+            </div>
+
+            <!-- Calendar Legend -->
+            <div class="mt-6 bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-3">Legend</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-green-100 border border-green-300 mr-2"></div>
+                        <span class="text-sm text-gray-700">My Approved Leave</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-yellow-100 border border-yellow-300 mr-2"></div>
+                        <span class="text-sm text-gray-700">My Pending Leave</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-red-100 border border-red-300 mr-2"></div>
+                        <span class="text-sm text-gray-700">My Rejected Leave</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-purple-100 border border-purple-300 mr-2"></div>
+                        <span class="text-sm text-gray-700">Public Holiday</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('hidden');
+        });
+
+        // --- Calendar Data (Sample for John Doe's personal calendar) ---
+        const events = {
+            "2025-05-10": [{ type: "My Annual Leave", description: "My Annual Leave (May 10-12) - Approved" }],
+            "2025-05-11": [{ type: "My Annual Leave", description: "My Annual Leave (May 10-12) - Approved" }],
+            "2025-05-12": [{ type: "My Annual Leave", description: "My Annual Leave (May 10-12) - Approved" }],
+            "2025-05-20": [{ type: "My Sick Leave (Pending)", description: "My Sick Leave (May 20) - Pending" }],
+            "2025-05-24": [{ type: "Public Holiday", description: "Wesak Day" }],
+        };
+
+        // --- DOM Elements ---
+        const currentMonthYearEl = document.getElementById('currentMonthYear');
+        const monthDaysContainer = document.getElementById('monthDaysContainer');
+        const viewSwitcher = document.getElementById('viewSwitcher');
+        const calendarViews = document.querySelectorAll('.calendar-view');
+        const prevMonthBtn = document.getElementById('prevMonthBtn');
+        const nextMonthBtn = document.getElementById('nextMonthBtn');
+        const todayBtn = document.getElementById('todayBtn');
+        
+        let currentDate = new Date(2025, 4, 1); // May 2025
+
+        // --- Functions (largely similar to employee_calendar.js) ---
+        function renderMonthCalendar() {
+            monthDaysContainer.innerHTML = '';
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            currentMonthYearEl.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                monthDaysContainer.appendChild(createDayDiv(daysInPrevMonth - firstDayOfMonth + 1 + i, true));
+            }
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                monthDaysContainer.appendChild(createDayDiv(day, false, events[dateStr] || [], dateStr));
+            }
+            const totalCells = 42;
+            const remainingCells = totalCells - (firstDayOfMonth + daysInMonth);
+            for (let i = 1; i <= remainingCells; i++) {
+                monthDaysContainer.appendChild(createDayDiv(i, true));
+            }
+        }
+
+        function createDayDiv(dayNumber, isOtherMonth, dayEvents = [], dateStr = '') {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = `h-32 p-2 overflow-y-auto cursor-pointer hover:bg-gray-100 transition-colors duration-150 ${isOtherMonth ? 'bg-gray-50 text-gray-400' : 'bg-white text-gray-900'}`;
+            dayDiv.innerHTML = `<div class="flex justify-end text-sm">${dayNumber}</div>`;
+            
+            if (!isOtherMonth && dayEvents.length > 0) {
+                dayEvents.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = `mt-1 text-xs p-1 rounded ${getEventColor(event.type)}`;
+                    eventDiv.textContent = event.description.split(' - ')[0];
+                    dayDiv.appendChild(eventDiv);
+                });
+            }
+            if (!isOtherMonth) {
+                dayDiv.addEventListener('click', () => showDayDetails(dateStr, dayEvents));
+            }
+            return dayDiv;
+        }
+        
+        function getEventColor(eventType) { // Standardized colors
+            if (eventType.includes("Annual Leave")) return "bg-green-100 text-green-800";
+            if (eventType.includes("Sick Leave")) return "bg-red-100 text-red-800"; // Adjusted for personal sick leave
+            if (eventType.includes("Pending")) return "bg-yellow-100 text-yellow-800";
+            if (eventType.includes("Public Holiday")) return "bg-purple-100 text-purple-800";
+            return "bg-gray-100 text-gray-800";
+        }
+
+        function showDayDetails(dateStr, dayEvents) {
+            if (dayEvents.length > 0) {
+                alert(`Events for ${dateStr}:\n${dayEvents.map(e => `${e.type}: ${e.description}`).join('\n')}`);
+            } else {
+                alert(`No events for ${dateStr}.`);
+            }
+        }
+
+        function switchView(viewValue) {
+            calendarViews.forEach(view => view.classList.add('hidden'));
+            document.getElementById(`${viewValue}View`).classList.remove('hidden');
+            if (viewValue === 'month') renderMonthCalendar();
+        }
+
+        // --- Event Listeners ---
+        viewSwitcher.addEventListener('change', (e) => switchView(e.target.value));
+        prevMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() - 1); renderMonthCalendar(); });
+        nextMonthBtn.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() + 1); renderMonthCalendar(); });
+        todayBtn.addEventListener('click', () => { currentDate = new Date(2025, 4, 1); renderMonthCalendar(); });
+        document.querySelector('button.flex.items-center').addEventListener('click', function() { this.nextElementSibling.classList.toggle('hidden'); });
+
+        // --- Initial Render ---
+        renderMonthCalendar();
+        switchView('month');
+    </script>
+</body>
+</html>

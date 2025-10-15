@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage My Team - John Doe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">John Doe</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="manager_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li><a href="manager_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">My Leave</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="manager_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-plus-circle"></i><span>Apply for My Leave</span></a></li>
+                            <li><a href="manager_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-list"></i><span>My Leave Summary</span></a></li>
+                            <li><a href="manager_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar"></i><span>My Calendar</span></a></li>
+                            <li><a href="manager_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-chart-pie"></i><span>My Leave Balance</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="mt-4">
+                        <span class="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Team Management</span>
+                        <ul class="mt-2 space-y-1">
+                            <li><a href="manager_team_approvals.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-check-circle"></i><span>Team Leave Approvals</span></a></li>
+                            <li><a href="manager_manage_team.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md"><i class="fas fa-users"></i><span>Manage Team</span></a></li>
+                            <li><a href="manager_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"><i class="fas fa-calendar-alt"></i><span>Team Calendar</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">Manage My Team</h1>
+                <p class="text-gray-600">View details and manage leave for your direct reports.</p>
+            </div>
+
+            <!-- Team Member Cards/List -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Sarah Chen -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img class="h-16 w-16 rounded-full" src="https://via.placeholder.com/64x64?text=SC" alt="Sarah Chen">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-900">Sarah Chen</h2>
+                            <p class="text-sm text-gray-500">Software Engineer</p>
+                            <p class="text-sm text-gray-500">EMP00123</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Annual Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">5 Days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sick Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">2 Days</span>
+                        </div>
+                         <div class="flex justify-between">
+                            <span class="text-gray-600">Currently on Leave:</span>
+                            <span class="font-medium text-red-600">No</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="manager_employee_leave_history_sarah.html" class="flex-1 text-center px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium hover:bg-blue-50">
+                            <i class="fas fa-history mr-1"></i> Leave History
+                        </a>
+                        <button onclick="viewEmployeeProfile('EMP00123')" class="flex-1 text-center px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50">
+                           <i class="fas fa-user mr-1"></i> View Profile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Michael Johnson -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img class="h-16 w-16 rounded-full" src="https://via.placeholder.com/64x64?text=MJ" alt="Michael Johnson">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-900">Michael Johnson</h2>
+                            <p class="text-sm text-gray-500">Senior Developer</p>
+                            <p class="text-sm text-gray-500">EMP00456</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Annual Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">8 Days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sick Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">1 Day</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Currently on Leave:</span>
+                            <span class="font-medium text-green-600">Yes (Annual)</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="#" class="flex-1 text-center px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium hover:bg-blue-50">
+                           <i class="fas fa-history mr-1"></i> Leave History
+                        </a>
+                         <button onclick="viewEmployeeProfile('EMP00456')" class="flex-1 text-center px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50">
+                           <i class="fas fa-user mr-1"></i> View Profile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lisa Wong -->
+                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <img class="h-16 w-16 rounded-full" src="https://via.placeholder.com/64x64?text=LW" alt="Lisa Wong">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-900">Lisa Wong</h2>
+                            <p class="text-sm text-gray-500">QA Engineer</p>
+                            <p class="text-sm text-gray-500">EMP00789</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Annual Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">2 Days</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sick Leave Taken (YTD):</span>
+                            <span class="font-medium text-gray-800">0 Days</span>
+                        </div>
+                         <div class="flex justify-between">
+                            <span class="text-gray-600">Currently on Leave:</span>
+                            <span class="font-medium text-red-600">No</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="#" class="flex-1 text-center px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium hover:bg-blue-50">
+                           <i class="fas fa-history mr-1"></i> Leave History
+                        </a>
+                         <button onclick="viewEmployeeProfile('EMP00789')" class="flex-1 text-center px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50">
+                           <i class="fas fa-user mr-1"></i> View Profile
+                        </button>
+                    </div>
+                </div>
+                <!-- Add more team member cards as needed -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Employee Profile Modal (Read-only) -->
+    <div id="employeeProfileModal" class="fixed z-20 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fas fa-user-circle text-blue-600"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalEmployeeName">Employee Profile</h3>
+                            <div class="mt-2 text-sm text-gray-700" id="modalEmployeeDetails">
+                                <!-- Dynamic content here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeEmployeeProfileModal()">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            this.nextElementSibling.classList.toggle('hidden');
+        });
+
+        const employeeProfileModal = document.getElementById('employeeProfileModal');
+        const modalEmployeeName = document.getElementById('modalEmployeeName');
+        const modalEmployeeDetails = document.getElementById('modalEmployeeDetails');
+
+        // Placeholder data for employee profiles (in a real app, this would come from a backend)
+        const teamData = {
+            'EMP00123': { name: 'Sarah Chen', role: 'Software Engineer', department: 'Engineering', email: 'sarah.chen@example.com', manager: 'John Doe' },
+            'EMP00456': { name: 'Michael Johnson', role: 'Senior Developer', department: 'Engineering', email: 'michael.johnson@example.com', manager: 'John Doe' },
+            'EMP00789': { name: 'Lisa Wong', role: 'QA Engineer', department: 'Engineering', email: 'lisa.wong@example.com', manager: 'John Doe' }
+        };
+
+        function viewEmployeeProfile(employeeId) {
+            const employee = teamData[employeeId];
+            if (employee) {
+                modalEmployeeName.textContent = `${employee.name}'s Profile (Read-Only)`;
+                modalEmployeeDetails.innerHTML = `
+                    <p><strong>Employee ID:</strong> ${employeeId}</p>
+                    <p><strong>Role:</strong> ${employee.role}</p>
+                    <p><strong>Department:</strong> ${employee.department}</p>
+                    <p><strong>Email:</strong> ${employee.email}</p>
+                    <p><strong>Reporting Manager:</strong> ${employee.manager}</p>
+                    <p class="mt-2 text-xs text-gray-400">This is a read-only summary.</p>
+                `;
+                employeeProfileModal.classList.remove('hidden');
+            } else {
+                alert('Employee details not found.');
+            }
+        }
+
+        function closeEmployeeProfileModal() {
+            employeeProfileModal.classList.add('hidden');
+        }
+        
+        // Close modal on escape key
+        window.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !employeeProfileModal.classList.contains('hidden')) {
+                closeEmployeeProfileModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for New Leave - Sarah Chen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Sarah Chen</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="employee_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="employee_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-md">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Apply for Leave</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-list"></i>
+                            <span>Leave Summary</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>My Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-users-slash"></i>
+                            <span>Team Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Leave Balance</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">Leave Application Form</h1>
+                    <p class="text-gray-600">Submit a new leave request</p>
+                </div>
+
+                <!-- Leave Application Form -->
+                <form class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                    <!-- Leave Type -->
+                    <div class="mb-6">
+                        <label for="leaveType" class="block text-sm font-medium text-gray-700 mb-1">Leave Type *</label>
+                        <select id="leaveType" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                            <option value="">Select leave type</option>
+                            <option value="annual">Annual Leave</option>
+                            <option value="sick">Sick Leave</option>
+                            <option value="emergency">Emergency Leave</option>
+                            <option value="maternity">Maternity Leave</option>
+                            <option value="paternity">Paternity Leave</option>
+                        </select>
+                    </div>
+
+                    <!-- Date Range -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="startDate" class="block text-sm font-medium text-gray-700 mb-1">Start Date *</label>
+                            <input type="date" id="startDate" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                        </div>
+                        <div>
+                            <label for="endDate" class="block text-sm font-medium text-gray-700 mb-1">End Date *</label>
+                            <input type="date" id="endDate" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" required>
+                        </div>
+                    </div>
+
+                    <!-- Half Day Options -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Half Day Options</label>
+                        <div class="flex space-x-4">
+                            <div class="flex items-center">
+                                <input id="none" name="halfDay" type="radio" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300" checked>
+                                <label for="none" class="ml-2 block text-sm text-gray-700">Full Day</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="firstHalf" name="halfDay" type="radio" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                                <label for="firstHalf" class="ml-2 block text-sm text-gray-700">First Half (AM)</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="secondHalf" name="halfDay" type="radio" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                                <label for="secondHalf" class="ml-2 block text-sm text-gray-700">Second Half (PM)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculated Duration -->
+                    <div class="mb-6 bg-blue-50 p-4 rounded-md">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-gray-700">Calculated Duration:</span>
+                            <span id="durationDisplay" class="text-lg font-semibold text-blue-600">0 days</span>
+                        </div>
+                    </div>
+
+                    <!-- Reason -->
+                    <div class="mb-6">
+                        <label for="reason" class="block text-sm font-medium text-gray-700 mb-1">Reason *</label>
+                        <textarea id="reason" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Briefly explain the reason for your leave" required></textarea>
+                    </div>
+
+                    <!-- Supporting Documents -->
+                    <div class="mb-6">
+                        <label for="documents" class="block text-sm font-medium text-gray-700 mb-1">Supporting Documents</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                                        <span>Upload files</span>
+                                        <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple>
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PDF, JPG, PNG up to 5MB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Approver Info -->
+                    <div class="mb-6 bg-gray-50 p-4 rounded-md">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Approver</label>
+                                <p class="text-sm text-gray-900">John Doe (Engineering Manager)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Your Leave Balance</label>
+                                <p class="text-sm text-gray-900">Annual: 10 days remaining</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex justify-end space-x-3">
+                        <a href="employee_dashboard.html" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Cancel
+                        </a>
+                        <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Date calculation
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+        const durationDisplay = document.getElementById('durationDisplay');
+
+        function calculateDuration() {
+            if (startDateInput.value && endDateInput.value) {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+                
+                // Calculate difference in days
+                const diffTime = Math.abs(endDate - startDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                
+                durationDisplay.textContent = `${diffDays} day${diffDays !== 1 ? 's' : ''}`;
+            }
+        }
+
+        startDateInput.addEventListener('change', calculateDuration);
+        endDateInput.addEventListener('change', calculateDuration);
+    </script>
+</body>
+</html>

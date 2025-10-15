@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Sarah Chen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center">
+                <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Company+Logo" alt="Company Logo">
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 focus:outline-none">
+                        <span class="text-gray-700">Sarah Chen</span>
+                        <i class="fas fa-chevron-down text-gray-500"></i>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+                        <a href="employee_profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm h-screen sticky top-0">
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="employee_dashboard.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_apply_leave.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Apply for Leave</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_leave_summary.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-list"></i>
+                            <span>Leave Summary</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>My Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_team_calendar.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-users-slash"></i>
+                            <span>Team Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="employee_leave_balance.html" class="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Leave Balance</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">My Profile</h1>
+                <p class="text-gray-600">View and manage your personal information</p>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 h-16 w-16 rounded-full bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-user text-gray-400 text-2xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Sarah Chen</h3>
+                            <p class="text-sm text-gray-500">Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Personal Information -->
+                        <div>
+                            <h4 class="text-md font-medium text-gray-900 mb-4">Personal Information</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Employee ID</p>
+                                    <p class="text-sm text-gray-900">EMP00123</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Email</p>
+                                    <p class="text-sm text-gray-900">sarah.chen@example.com</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Department</p>
+                                    <p class="text-sm text-gray-900">Engineering</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Reporting Manager</p>
+                                    <p class="text-sm text-gray-900">John Doe</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Date Joined</p>
+                                    <p class="text-sm text-gray-900">15 March 2022</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div>
+                            <h4 class="text-md font-medium text-gray-900 mb-4">Contact Information</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Phone Number</p>
+                                    <p class="text-sm text-gray-900">+6012-3456789</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Address</p>
+                                    <p class="text-sm text-gray-900">
+                                        123 Jalan ABC<br>
+                                        Taman DEF<br>
+                                        55100 Kuala Lumpur<br>
+                                        Malaysia
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">Emergency Contact</p>
+                                    <p class="text-sm text-gray-900">
+                                        Michael Chen (Father)<br>
+                                        +6012-9876543
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 border-t border-gray-100 bg-gray-50">
+                    <div class="flex justify-end">
+                        <button class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="mt-6 bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+                <h4 class="text-md font-medium text-gray-900 mb-4">Additional Information</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Bank Details -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-700 mb-2">Bank Account Details</h5>
+                        <div class="space-y-2">
+                            <p class="text-sm text-gray-900">Bank Name: Maybank</p>
+                            <p class="text-sm text-gray-900">Account Number: 1234567890</p>
+                            <p class="text-sm text-gray-900">Account Type: Savings</p>
+                        </div>
+                    </div>
+
+                    <!-- Tax Information -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-700 mb-2">Tax Information</h5>
+                        <div class="space-y-2">
+                            <p class="text-sm text-gray-900">Tax ID: 123456-78-9012</p>
+                            <p class="text-sm text-gray-900">Tax Category: Single</p>
+                            <p class="text-sm text-gray-900">EPF Number: A12345678</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple dropdown toggle
+        document.querySelector('button.flex.items-center').addEventListener('click', function() {
+            const dropdown = this.nextElementSibling;
+            dropdown.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
