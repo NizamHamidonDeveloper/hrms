@@ -1,65 +1,96 @@
 import { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { User, UserRole } from './auth/types'
+import { UserRole } from './auth/types'
 
-// This is a mock user database for the prototype
-// In a real application, this would be replaced with a database
-const users: User[] = [
-  {
-    id: '1',
-    email: 'employee@example.com',
-    name: 'Demo Employee',
-    roles: ['employee'],
-    department: 'Engineering',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-  {
-    id: '2',
-    email: 'manager@example.com',
-    name: 'Demo Manager',
-    roles: ['manager', 'employee'],
-    department: 'Engineering',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-  {
-    id: '3',
-    email: 'admin@example.com',
-    name: 'Demo Admin',
-    roles: ['hr_admin', 'employee'],
-    department: 'HR',
-    joinDate: new Date('2023-01-01'),
-    status: 'active',
-  },
-]
+// Mock user database is now defined inline in the authorize function
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET || 'fallback-secret-for-development',
+  debug: process.env.NODE_ENV === 'development',
   providers: [
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: { label: 'Email', type: 'email' },
+        username: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        try {
+          if (!credentials?.username || !credentials?.password) {
+            console.log('DEBUG: Missing username or password', credentials)
+            return null
+          }
+
+          // Mock user database for development
+          const mockUsers = [
+            {
+              id: '1',
+              username: 'employee',
+              password: 'password',
+              email: 'employee@example.com',
+              name: 'Demo Employee',
+              role_id: 4, // Employee role
+              department: 'Engineering',
+            },
+            {
+              id: '2',
+              username: 'manager',
+              password: 'password',
+              email: 'manager@example.com',
+              name: 'Demo Manager',
+              role_id: 3, // Manager role
+              department: 'Engineering',
+            },
+            {
+              id: '3',
+              username: 'admin',
+              password: 'password',
+              email: 'admin@example.com',
+              name: 'Demo Admin',
+              role_id: 5, // HR Admin role
+              department: 'HR',
+            },
+          ]
+
+          // Find user by username and password
+          const user = mockUsers.find(
+            (u) => u.username === credentials.username && u.password === credentials.password
+          )
+
+          if (!user) {
+            console.log('DEBUG: Invalid credentials')
+            return null
+          }
+
+          console.log('DEBUG: Login successful for user:', user.name)
+          // Map role_id to UserRole string
+          let roleString: '4' | '3' | '5' | 'hr_admin' | 'manager' | 'employee';
+          switch (user.role_id) {
+            case 4:
+              roleString = 'employee';
+              break;
+            case 3:
+              roleString = 'manager';
+              break;
+            case 5:
+              roleString = 'hr_admin';
+              break;
+            default:
+              roleString = 'employee';
+          }
+          
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            roles: [roleString],
+            department: user.department,
+            joinDate: new Date(),
+            status: 'active' as const,
+          }
+        } catch (error) {
+          console.error('DEBUG: Authentication error:', error)
           return null
-        }
-
-        // For the prototype, we'll accept any password
-        // In a real application, you would verify the password against a hashed value
-        const user = users.find((user) => user.email === credentials.email)
-
-        if (!user) {
-          return null
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          roles: user.roles,
         }
       },
     }),
