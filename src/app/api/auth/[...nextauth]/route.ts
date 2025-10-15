@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { User } from '@/lib/auth/types'
+import { UserRole } from '@/lib/auth/types'
 
 // Removed unused mock users array
 
@@ -17,35 +17,73 @@ const handler = NextAuth({
           console.log('DEBUG: Missing username or password', credentials)
           return null
         }
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-        if (!apiUrl) {
-          throw new Error('NEXT_PUBLIC_API_URL is not set');
-        }
-        try {
-          // Call Laravel backend login endpoint
-          const res = await fetch(`${apiUrl}/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: credentials.username, password: credentials.password })
-          })
-          const data = await res.json()
-          if (!data.status || !data.user || !data.token) {
-            console.log('DEBUG: Login failed', data)
-            return null
-          }
-          // Store profile at the top level for easy access
-          return {
-            id: data.user.id?.toString() ?? '',
-            email: data.user.email ?? '',
-            name: data.user.name ?? '',
-            roles: ['4'], // Default to employee role
+
+        // Mock user database for development
+        const mockUsers = [
+          {
+            id: '1',
+            username: 'employee',
+            password: 'password',
+            email: 'employee@example.com',
+            name: 'Demo Employee',
+            role_id: 4, // Employee role
             department: 'Engineering',
-            joinDate: new Date(),
-            status: 'active',
-          } as User
-        } catch (e) {
-          console.log('DEBUG: Exception during login', e)
+          },
+          {
+            id: '2',
+            username: 'manager',
+            password: 'password',
+            email: 'manager@example.com',
+            name: 'Demo Manager',
+            role_id: 3, // Manager role
+            department: 'Engineering',
+          },
+          {
+            id: '3',
+            username: 'admin',
+            password: 'password',
+            email: 'admin@example.com',
+            name: 'Demo Admin',
+            role_id: 5, // HR Admin role
+            department: 'HR',
+          },
+        ]
+
+        // Find user by username and password
+        const user = mockUsers.find(
+          (u) => u.username === credentials.username && u.password === credentials.password
+        )
+
+        if (!user) {
+          console.log('DEBUG: Invalid credentials')
           return null
+        }
+
+        console.log('DEBUG: Login successful for user:', user.name)
+        // Map role_id to UserRole string
+        let roleString: '4' | '3' | '5' | 'hr_admin' | 'manager' | 'employee';
+        switch (user.role_id) {
+          case 4:
+            roleString = 'employee';
+            break;
+          case 3:
+            roleString = 'manager';
+            break;
+          case 5:
+            roleString = 'hr_admin';
+            break;
+          default:
+            roleString = 'employee';
+        }
+        
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          roles: [roleString],
+          department: user.department,
+          joinDate: new Date(),
+          status: 'active' as const,
         }
       },
     }),
@@ -53,26 +91,19 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const userObj = user as { id?: string; name?: string; email?: string; accessToken?: string; user?: unknown; profile?: unknown };
-        token.id = userObj.id ?? '';
-        token.name = userObj.name ?? '';
-        token.email = userObj.email ?? '';
-        token.accessToken = userObj.accessToken ?? '';
-        token.user = userObj.user ?? null;
-        token.profile = userObj.profile ?? null;
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.roles = user.roles;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
-        const sessionUser = session.user as { id?: string; name?: string; email?: string };
-        const sessionObj = session as { accessToken?: string; user?: unknown; profile?: unknown };
-        sessionUser.id = (token.id as string) || '';
-        sessionUser.name = (token.name as string) || '';
-        sessionUser.email = (token.email as string) || '';
-        sessionObj.accessToken = (token.accessToken as string) || '';
-        sessionObj.user = token.user || null;
-        sessionObj.profile = token.profile || null;
+        session.user.id = token.id as string;
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
+        session.user.roles = token.roles as UserRole[];
       }
       return session;
     },

@@ -5,7 +5,6 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getSession } from 'next-auth/react'
-import { ROLE_ID } from '../lib/roles'
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 
 export default function LoginPage() {
@@ -29,15 +28,15 @@ export default function LoginPage() {
     })
     if (!result?.error) {
       const session = await getSession()
-      const roleId = (session as { profile?: { role_id?: number } })?.profile?.role_id
-      const roleIdNum = Number(roleId)
-      if (roleIdNum === ROLE_ID.HR_ADMIN) {
+      const roles = (session as { user?: { roles?: string[] } })?.user?.roles
+      const role = roles?.[0]
+      if (role === 'hr_admin') {
         router.push('/admin/dashboard');
         return;
-      } else if (roleIdNum === ROLE_ID.MANAGER) {
+      } else if (role === 'manager') {
         router.push('/manager/dashboard');
         return;
-      } else if (roleIdNum === ROLE_ID.EMPLOYEE) {
+      } else if (role === 'employee') {
         router.push('/employee/dashboard');
         return;
       } else {
@@ -135,15 +134,15 @@ export default function LoginPage() {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerSession(context.req, context.res, authOptions)
-  // Use profile.role_id for role-based redirect
-  const profile = (session as { profile?: { role_id?: number } })?.profile;
-  const roleId = profile?.role_id;
-  console.log('LOGIN PAGE DEBUG: session:', session, 'roleId:', roleId);
-  if (roleId === ROLE_ID.HR_ADMIN) {
+  // Use user.roles for role-based redirect
+  const roles = (session as { user?: { roles?: string[] } })?.user?.roles;
+  const role = roles?.[0];
+  console.log('LOGIN PAGE DEBUG: session:', session, 'role:', role);
+  if (role === 'hr_admin') {
     return { redirect: { destination: '/admin/dashboard', permanent: false } }
-  } else if (roleId === ROLE_ID.MANAGER) {
+  } else if (role === 'manager') {
     return { redirect: { destination: '/manager/dashboard', permanent: false } }
-  } else if (roleId === ROLE_ID.EMPLOYEE) {
+  } else if (role === 'employee') {
     return { redirect: { destination: '/employee/dashboard', permanent: false } }
   }
   return { props: {} }
